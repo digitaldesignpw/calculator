@@ -4,8 +4,6 @@
 	<meta charset="UTF-8">
 	<title>Formulario de Mascotas</title>
 	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0, minimun-scale=1.0"/>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<script src="javascript/script.js"></script>
 </head>
 <body>
 <div class="calculator-app">
@@ -1215,9 +1213,14 @@
 	</div>
 	<style>
 		* {
+			margin: 0;
+			padding: 0;
 			box-sizing: border-box;
 		}
 		body {
+			padding: 0px;
+			margin: 0px;
+			position: relative;
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -1314,14 +1317,6 @@
 			border-color: #c4c4c4;
 		}
 		/*SECOND VIEW*/	
-		/*
-		.calculator-message {
-			display: none;
-			width: 100%;
-			height: auto;
-			background-color: #fff;
-		}
-		*/
 		.calculator-message {
 			display: flex;
 			width: 100%;
@@ -1332,15 +1327,7 @@
 			align-items: center;
 			transform: translateX(100%);
 			transition: 0.2s ease-out;
-		}
-		/*
-		.calculator-message.resultado {
-			display: flex;
-			flex-direction: column;
-			justify-content: space-evenly;
-			align-items: center;
-		}
-		*/	
+		}	
 		.calculator-message.resultado {
 			transform: translateX(0%);
 		}
@@ -1392,33 +1379,6 @@
 			color: #fff;
 			border-color: transparent;
 		}
-		/*
-		#caza-origen {
-			background: #ffc927;
-		}
-		#presa-bosque {
-			background: #60d66a;
-		}
-		#pollo-corral {
-			background: #ff7b7b;
-		}
-		#sabor-gaucho {
-			background: #033fbd;
-		}
-		#felino-ancestral {
-		background: #752ccd;
-		}
-		.product-button {
-			color: #fff;
-			text-decoration: none;
-			padding: 1em 2em;
-			display: none;
-			font-weight: bold;
-		}
-		.product-button.show {
-			display: block;
-		}
-		*/
 		.product-button {
 			color: #fff;
 			text-decoration: none;
