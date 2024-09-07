@@ -63,6 +63,16 @@
 					<option value="28">28 Kg</option>
 					<option value="29">29 Kg</option>
 					<option value="30">30 Kg</option>
+					<option value="31">31 Kg</option>
+					<option value="32">32 Kg</option>
+					<option value="33">33 Kg</option>
+					<option value="34">34 Kg</option>
+					<option value="35">35 Kg</option>
+					<option value="36">36 Kg</option>
+					<option value="37">37 Kg</option>
+					<option value="38">38 Kg</option>
+					<option value="39">39 Kg</option>
+					<option value="40">40 Kg</option>
 				</select><br><br>
 			
 				<select id="tamano" name="tamano">
@@ -1200,7 +1210,27 @@
 					C1667.6,1737.8,1666.8,1739.3,1665.9,1739.4z"/>
 			</g>
 			</svg>
+			<!--
 			<p id="calculator-message_title" class="calculator-message_title"></p>
+			-->
+			<p id="calculator-message_title" class="calculator-message_title">Consumo recomendado para tu mascota:</p>
+			<div class="calculator-message-cont">
+				<div id="calculator-message_day" class="calculator-message_day">
+					<span class="sub-title_table">Diario</span>
+					<div class="calculator-amount">
+						<span id="calculator-amount_gr_day"></span>
+						<span id="calculator-amount_cube_day"></span>
+					</div>
+				</div>
+				<div id="calculator-message_month" class="calculator-message_month">
+					<span class="sub-title_table">Mensual</span>
+					<div class="calculator-amount">
+						<span id="calculator-amount_gr_month"></span>
+						<span id="calculator-amount_cube_month"></span>
+					</div>
+				</div>
+			</div>
+			<p id="calculator-message_products" class="calculator-message_products"></p>
 			<div class="products-links">
 				<a href="#" id="caza-origen" class="product-button">Caza de Origen</a>
 				<a href="#" id="presa-bosque" class="product-button">Presa del Bosque</a>
@@ -1331,9 +1361,10 @@
 		.calculator-message.resultado {
 			transform: translateX(0%);
 		}
-		.calculator-message_title {
+		.calculator-message_title, .calculator-message_products {
 			margin-bottom: 1rem;
-			font-size: 1.5em;
+			font-size: 1em;
+			font-style: italic;
 		}
 		#mascots-svg {
 			width: 100%;
@@ -1408,6 +1439,31 @@
 			background-color: #fff;
 			color: #000;
 			border-color: #c4c4c4;
+		}
+		.calculator-message-cont {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 0.5rem;
+			width: 100%;
+			flex-wrap: wrap;
+		}
+		.sub-title_table {
+			background: #ff9a00;
+			padding: 0.5em 1em;
+			display: block;
+			width: 100%;
+			color: #fff;
+		}
+		.calculator-message_day, .calculator-message_month {
+			margin-bottom: 1rem;
+		}
+		.calculator-amount {
+			padding: 0.5rem 2rem;
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+			border: 1px solid #ff9a00;
 		}
 	</style>
 	<script>
@@ -1626,26 +1682,68 @@
 			}
 
 			let mascot_food_text;
-			if((edad == "cachorro")&&(peso<=18)&&(tipo == "perro")){
-				mascot_food_text = `La racion ideal para tu perrito es de unos ${mascot_min} a ${mascot_max} Gramos o de ${meatball_min} y ${meatball_max} Albondigas`;
-			} else if((edad == "cachorro")&&(peso<=18)&&(tipo == "gato")){
-				mascot_food_text = `La racion ideal para tu gatito es de unos ${mascot_min} a ${mascot_max} Gramos o de ${meatball_min} y ${meatball_max} Albondigas`;
-			} else if(tipo == "perro"){
-				mascot_food_text = `La racion ideal para tu perrito es de unos ${mascot_min} Gramos o de ${meatball_min} Albondigas`;
-			} else if(tipo == "gato"){
-				mascot_food_text = `La racion ideal para tu gatito es de unos ${mascot_min} Gramos o de ${meatball_min} Albondigas`;
-			}  
-
 			let mascot_allergy_text;
+			let food_cube_day;
+			let food_gr_day;
+			let food_cube_month;
+			let food_gr_month;
+			/*
+			if((edad == "cachorro")&&(peso<=18)&&(tipo == "perro")){
+				mascot_food_text = `Tu perrito debe consumir de unos ${mascot_min} a ${mascot_max} Gramos o de ${meatball_min} y ${meatball_max} cubitos en el transcurso del dia`;
+			} else if((edad == "cachorro")&&(peso<=18)&&(tipo == "gato")){
+				mascot_food_text = `Tu gatito debe consumir de unos ${mascot_min} a ${mascot_max} Gramos o de ${meatball_min} y ${meatball_max} cubitos en el transcurso del dia`;
+			} else if(tipo == "perro"){
+				mascot_food_text = `Tu perrito debe consumir de unos ${mascot_min} Gramos o de ${meatball_min} cubitos en el transcurso del dia`;
+			} else if(tipo == "gato"){
+				mascot_food_text = `Tu gatito debe consumir de unos ${mascot_min} Gramos o de ${meatball_min} cubitos en el transcurso del dia`;
+			}  
 			if (alergia == "ninguna"){
 				mascot_allergy_text = ` de cualquiera de nuestros siguentes productos:`;
 			}else{
 				mascot_allergy_text = ` de nuestro siguente producto:`;
 			}
+			*/
+			if((edad == "cachorro")&&(peso<=18)&&(tipo == "perro")){
 
-			console.log(mascot_food_text + mascot_allergy_text);
+				food_cube_day = `${meatball_min} a ${meatball_max} cubitos.`;
+				food_gr_day = `${mascot_min} a ${mascot_max} gramos.`;
+				food_cube_month = `${meatball_min*30} a ${meatball_max*30} cubitos.`;
+				food_gr_month = `${(mascot_min*30)/1000} a ${(mascot_max*30)/1000} kilos.`;
 
-			document.getElementById("calculator-message_title").textContent = mascot_food_text + mascot_allergy_text;
+			} else if((edad == "cachorro")&&(peso<=18)&&(tipo == "gato")){
+
+				food_cube_day = `${meatball_min} a ${meatball_max} cubitos.`;
+				food_gr_day = `${mascot_min} a ${mascot_max} gramos.`;
+				food_cube_month = `${meatball_min*30} a ${meatball_max*30} cubitos.`;
+				food_gr_month = `${(mascot_min*30)/1000} a ${(mascot_max*30)/1000} kilos.`;
+
+			} else if(tipo == "perro"){
+
+				food_cube_day = `${meatball_min} cubitos.`;
+				food_gr_day = `${mascot_min} gramos.`;
+				food_cube_month = `${meatball_min*30} cubitos.`;
+				food_gr_month = `${(mascot_min*30)/1000} kilos.`;
+
+			} else if(tipo == "gato"){
+
+				food_cube_day = `${meatball_min} cubitos.`;
+				food_gr_day = `${mascot_min} gramos.`;
+				food_cube_month = `${meatball_min*30} cubitos.`;
+				food_gr_month = `${(mascot_min*30)/1000} kilos.`;
+
+			}  
+			if (alergia == "ninguna"){
+				mascot_allergy_text = `Productos especiales para tu mascota:`;
+			}else{
+				mascot_allergy_text = `Producto especial para tu mascota:`;
+			}
+
+			document.getElementById("calculator-amount_gr_month").textContent = food_gr_month;
+			document.getElementById("calculator-amount_cube_month").textContent = food_cube_month;
+			document.getElementById("calculator-amount_gr_day").textContent = food_gr_day;
+			document.getElementById("calculator-amount_cube_day").textContent = food_cube_day;
+
+			document.getElementById("calculator-message_products").textContent = mascot_allergy_text;
 
 			document.getElementById('calculator-form').classList.add('resultado');
 			document.getElementById('calculator-message').classList.add('resultado');
