@@ -48,33 +48,43 @@
 					<option value="13">13 Kg</option>
 					<option value="14">14 Kg</option>
 					<option value="15">15 Kg</option>
-					<option value="16">16 Kg</option>
-					<option value="17">17 Kg</option>
-					<option value="18">18 Kg</option>
-					<option value="19">19 Kg</option>
-					<option value="20">20 Kg</option>
-					<option value="21">21 Kg</option>
-					<option value="22">22 Kg</option>
-					<option value="23">23 Kg</option>
-					<option value="24">24 Kg</option>
-					<option value="25">25 Kg</option>
-					<option value="26">26 Kg</option>
-					<option value="27">27 Kg</option>
-					<option value="28">28 Kg</option>
-					<option value="29">29 Kg</option>
-					<option value="30">30 Kg</option>
-					<option value="31">31 Kg</option>
-					<option value="32">32 Kg</option>
-					<option value="33">33 Kg</option>
-					<option value="34">34 Kg</option>
-					<option value="35">35 Kg</option>
-					<option value="36">36 Kg</option>
-					<option value="37">37 Kg</option>
-					<option value="38">38 Kg</option>
-					<option value="39">39 Kg</option>
-					<option value="40">40 Kg</option>
+					<option value="16" class="maximum-weight">16 Kg</option>
+					<option value="17" class="maximum-weight">17 Kg</option>
+					<option value="18" class="maximum-weight">18 Kg</option>
+					<option value="19" class="maximum-weight">19 Kg</option>
+					<option value="20" class="maximum-weight">20 Kg</option>
+					<option value="21" class="maximum-weight">21 Kg</option>
+					<option value="22" class="maximum-weight">22 Kg</option>
+					<option value="23" class="maximum-weight">23 Kg</option>
+					<option value="24" class="maximum-weight">24 Kg</option>
+					<option value="25" class="maximum-weight">25 Kg</option>
+					<option value="26" class="maximum-weight">26 Kg</option>
+					<option value="27" class="maximum-weight">27 Kg</option>
+					<option value="28" class="maximum-weight">28 Kg</option>
+					<option value="29" class="maximum-weight">29 Kg</option>
+					<option value="30" class="maximum-weight">30 Kg</option>
+					<option value="31" class="maximum-weight">31 Kg</option>
+					<option value="32" class="maximum-weight">32 Kg</option>
+					<option value="33" class="maximum-weight">33 Kg</option>
+					<option value="34" class="maximum-weight">34 Kg</option>
+					<option value="35" class="maximum-weight">35 Kg</option>
+					<option value="36" class="maximum-weight">36 Kg</option>
+					<option value="37" class="maximum-weight">37 Kg</option>
+					<option value="38" class="maximum-weight">38 Kg</option>
+					<option value="39" class="maximum-weight">39 Kg</option>
+					<option value="40" class="maximum-weight">40 Kg</option>
+					<option value="41" class="maximum-weight">41 Kg</option>
+					<option value="42" class="maximum-weight">42 Kg</option>
+					<option value="43" class="maximum-weight">43 Kg</option>
+					<option value="44" class="maximum-weight">44 Kg</option>
+					<option value="45" class="maximum-weight">45 Kg</option>
+					<option value="46" class="maximum-weight">46 Kg</option>
+					<option value="47" class="maximum-weight">47 Kg</option>
+					<option value="48" class="maximum-weight">48 Kg</option>
+					<option value="49" class="maximum-weight">49 Kg</option>
+					<option value="50" class="maximum-weight">50 Kg</option>
 				</select><br><br>
-			
+				<!--
 				<select id="tamano" name="tamano">
 					<option value="" disabled selected>Tamaño</option>
 					<option value="pequeño">Pequeño</option>
@@ -82,7 +92,7 @@
 					<option value="mediano">Mediano</option>
 					<option value="grande">Grande</option>
 				</select><br><br>
-
+				-->
 				<select id="alergia" name="alergia">
 					<option value="" disabled selected>Tipo de Alergia</option>
 					<option value="ninguna">Ninguna</option>
@@ -1230,6 +1240,7 @@
 					</div>
 				</div>
 			</div>
+			<p id="calculator-message_activity" class="calculator-message_activity"></p>
 			<p id="calculator-message_products" class="calculator-message_products"></p>
 			<div class="products-links">
 				<a href="#" id="caza-origen" class="product-button">Caza de Origen</a>
@@ -1248,14 +1259,13 @@
 			box-sizing: border-box;
 		}
 		body {
-			padding: 0px;
+			padding: 2rem;
 			margin: 0px;
 			position: relative;
 			display: flex;
 			justify-content: center;
 			align-items: center;
 			width: 100%;
-			height: 100vh;
 			background: #fff;
 		}
 		.calculator-app {
@@ -1282,7 +1292,7 @@
 			transition: 0.2s ease-out;
 		}
 		.calculator-form.resultado {
-			transform: translateX(-100%);
+			/*transform: translateX(-100%);*/
 		}
 		.calculator-title {
 			margin: 0em 0em 1em;
@@ -1316,6 +1326,9 @@
 			border: 1px solid #c4c4c4;
   			background-color: #fff;
 			cursor: pointer;
+		}
+		.hide-weight {
+			display: none;
 		}
 		.calculator-form .empty-value{
 			border-color: red;
@@ -1355,16 +1368,24 @@
 			flex-direction: column;
 			justify-content: space-evenly;
 			align-items: center;
-			transform: translateX(100%);
+			transform: translateY(-100%);
+			opacity: 0;
 			transition: 0.2s ease-out;
 		}	
 		.calculator-message.resultado {
-			transform: translateX(0%);
+			transform: translateY(0%);
+			opacity: 1;
 		}
 		.calculator-message_title, .calculator-message_products {
 			margin-bottom: 1rem;
 			font-size: 1em;
 			font-style: italic;
+		}
+		#calculator-message_activity {
+			margin-bottom: 2rem;
+			font-size: 0.8em;
+			padding-bottom: 2rem;
+  			border-bottom: 2px solid #ff9a00;
 		}
 		#mascots-svg {
 			width: 100%;
@@ -1382,7 +1403,7 @@
 			opacity: 1;
 		}
 		.products-links {
-			margin-bottom: 1rem;
+			margin-bottom: 3rem;
 			width: 100%;
 		}
 		#caza-origen:hover {
@@ -1537,7 +1558,7 @@
 			let tipo = document.querySelector('input[name="tipo"]:checked').value;
 			let edad = document.getElementById('edad').value;
 			let peso = document.getElementById('peso').value;
-			let tamano = document.getElementById('tamano').value;
+			//let tamano = document.getElementById('tamano').value;
 			let alergia = document.getElementById('alergia').value;
 
 			let tipo_mascota;
@@ -1611,51 +1632,51 @@
 						mascot_max = peso * 1000 * 0.1;
 						meatball_max = calculateMeatballs(mascot_max);
 					}else if(peso<=18){
-						mascot_min = peso * 1000 * 0.025;
+						mascot_min = peso * 1000 * 0.03;
 						meatball_min = calculateMeatballs(mascot_min);
-						mascot_max = peso * 1000 * 0.03;
+						mascot_max = peso * 1000 * 0.05;
 						meatball_max = calculateMeatballs(mascot_max);
 					}else if(peso<=27){
-						mascot_min = peso * 1000 * 0.03;
+						mascot_min = peso * 1000 * 0.05;
 						meatball_min = calculateMeatballs(mascot_min);
-						mascot_max = peso * 1000 * 0.03;
+						mascot_max = peso * 1000 * 0.05;
 						meatball_max = calculateMeatballs(mascot_max);
 					}else if(peso<=36){
-						mascot_min = peso * 1000 * 0.03;
+						mascot_min = peso * 1000 * 0.05;
 						meatball_min = calculateMeatballs(mascot_min);
-						mascot_max = peso * 1000 * 0.03;
+						mascot_max = peso * 1000 * 0.05;
 						meatball_max = calculateMeatballs(mascot_max);
 					}else{
-						mascot_min = peso * 1000 * 0.03;
+						mascot_min = peso * 1000 * 0.05;
 						meatball_min = calculateMeatballs(mascot_min);
-						mascot_max = peso * 1000 * 0.03;
+						mascot_max = peso * 1000 * 0.05;
 						meatball_max = calculateMeatballs(mascot_max);
 					}
 				}else if(edad == "adulto"){
 					if(peso<=9){
-						mascot_min = peso * 1000 * 0.025;
+						mascot_min = peso * 1000 * 0.03;
 						meatball_min = calculateMeatballs(mascot_min);
-						mascot_max = peso * 1000 * 0.025;
+						mascot_max = peso * 1000 * 0.03;
 						meatball_max = calculateMeatballs(mascot_max);
 					}else if(peso<=18){
-						mascot_min = peso * 1000 * 0.025;
+						mascot_min = peso * 1000 * 0.03;
 						meatball_min = calculateMeatballs(mascot_min);
-						mascot_max = peso * 1000 * 0.025;
+						mascot_max = peso * 1000 * 0.03;
 						meatball_max = calculateMeatballs(mascot_max);
 					}else if(peso<=27){
-						mascot_min = peso * 1000 * 0.025;
+						mascot_min = peso * 1000 * 0.03;
 						meatball_min = calculateMeatballs(mascot_min);
-						mascot_max = peso * 1000 * 0.025;
+						mascot_max = peso * 1000 * 0.03;
 						meatball_max = calculateMeatballs(mascot_max);
 					}else if(peso<=36){
-						mascot_min = peso * 1000 * 0.025;
+						mascot_min = peso * 1000 * 0.03;
 						meatball_min = calculateMeatballs(mascot_min);
-						mascot_max = peso * 1000 * 0.025;
+						mascot_max = peso * 1000 * 0.03;
 						meatball_max = calculateMeatballs(mascot_max);
 					}else{
-						mascot_min = peso * 1000 * 0.025;
+						mascot_min = peso * 1000 * 0.03;
 						meatball_min = calculateMeatballs(mascot_min);
-						mascot_max = peso * 1000 * 0.025;
+						mascot_max = peso * 1000 * 0.03;
 						meatball_max = calculateMeatballs(mascot_max);	
 					}
 				}
@@ -1683,59 +1704,52 @@
 
 			let mascot_food_text;
 			let mascot_allergy_text;
+			let mascot_activity_text;
 			let food_cube_day;
 			let food_gr_day;
 			let food_cube_month;
 			let food_gr_month;
-			/*
+
 			if((edad == "cachorro")&&(peso<=18)&&(tipo == "perro")){
-				mascot_food_text = `Tu perrito debe consumir de unos ${mascot_min} a ${mascot_max} Gramos o de ${meatball_min} y ${meatball_max} cubitos en el transcurso del dia`;
+
+				food_cube_day = `${meatball_min} a ${meatball_max} cubitos.`;
+				food_gr_day = `${mascot_min} a ${mascot_max} g.`;
+				food_cube_month = `${meatball_min*30} a ${meatball_max*30} cubitos.`;
+				food_gr_month = `${(mascot_min*30)/1000} a ${(mascot_max*30)/1000} Kg.`;
+
 			} else if((edad == "cachorro")&&(peso<=18)&&(tipo == "gato")){
-				mascot_food_text = `Tu gatito debe consumir de unos ${mascot_min} a ${mascot_max} Gramos o de ${meatball_min} y ${meatball_max} cubitos en el transcurso del dia`;
+
+				food_cube_day = `${meatball_min} a ${meatball_max} cubitos.`;
+				food_gr_day = `${mascot_min} a ${mascot_max} g.`;
+				food_cube_month = `${meatball_min*30} a ${meatball_max*30} cubitos.`;
+				food_gr_month = `${(mascot_min*30)/1000} a ${(mascot_max*30)/1000} Kg.`;
+
 			} else if(tipo == "perro"){
-				mascot_food_text = `Tu perrito debe consumir de unos ${mascot_min} Gramos o de ${meatball_min} cubitos en el transcurso del dia`;
+
+				food_cube_day = `${meatball_min} cubitos.`;
+				food_gr_day = `${mascot_min} g.`;
+				food_cube_month = `${meatball_min*30} cubitos.`;
+				food_gr_month = `${(mascot_min*30)/1000} Kg.`;
+
 			} else if(tipo == "gato"){
-				mascot_food_text = `Tu gatito debe consumir de unos ${mascot_min} Gramos o de ${meatball_min} cubitos en el transcurso del dia`;
+
+				food_cube_day = `${meatball_min} cubitos.`;
+				food_gr_day = `${mascot_min} g.`;
+				food_cube_month = `${meatball_min*30} cubitos.`;
+				food_gr_month = `${(mascot_min*30)/1000} Kg.`;
+
 			}  
-			if (alergia == "ninguna"){
-				mascot_allergy_text = ` de cualquiera de nuestros siguentes productos:`;
-			}else{
-				mascot_allergy_text = ` de nuestro siguente producto:`;
+
+			if(tipo == "perro"){
+				mascot_activity_text = `PD: Si su perro tiene mucha actividad física, la ingesta recomendada puede ser mayor. Los valores reflejados son estimativos.`;
+			} else if(tipo == "gato"){
+				mascot_activity_text = `PD: Si su gato tiene mucha actividad física, la ingesta recomendada puede ser mayor. Los valores reflejados son estimativos.`;
 			}
-			*/
-			if((edad == "cachorro")&&(peso<=18)&&(tipo == "perro")){
 
-				food_cube_day = `${meatball_min} a ${meatball_max} cubitos.`;
-				food_gr_day = `${mascot_min} a ${mascot_max} gramos.`;
-				food_cube_month = `${meatball_min*30} a ${meatball_max*30} cubitos.`;
-				food_gr_month = `${(mascot_min*30)/1000} a ${(mascot_max*30)/1000} kilos.`;
-
-			} else if((edad == "cachorro")&&(peso<=18)&&(tipo == "gato")){
-
-				food_cube_day = `${meatball_min} a ${meatball_max} cubitos.`;
-				food_gr_day = `${mascot_min} a ${mascot_max} gramos.`;
-				food_cube_month = `${meatball_min*30} a ${meatball_max*30} cubitos.`;
-				food_gr_month = `${(mascot_min*30)/1000} a ${(mascot_max*30)/1000} kilos.`;
-
-			} else if(tipo == "perro"){
-
-				food_cube_day = `${meatball_min} cubitos.`;
-				food_gr_day = `${mascot_min} gramos.`;
-				food_cube_month = `${meatball_min*30} cubitos.`;
-				food_gr_month = `${(mascot_min*30)/1000} kilos.`;
-
-			} else if(tipo == "gato"){
-
-				food_cube_day = `${meatball_min} cubitos.`;
-				food_gr_day = `${mascot_min} gramos.`;
-				food_cube_month = `${meatball_min*30} cubitos.`;
-				food_gr_month = `${(mascot_min*30)/1000} kilos.`;
-
-			}  
 			if (alergia == "ninguna"){
-				mascot_allergy_text = `Productos especiales para tu mascota:`;
+				mascot_allergy_text = `Opciones para tu mascota:`;
 			}else{
-				mascot_allergy_text = `Producto especial para tu mascota:`;
+				mascot_allergy_text = `Opciones para tu mascota:`;
 			}
 
 			document.getElementById("calculator-amount_gr_month").textContent = food_gr_month;
@@ -1743,6 +1757,7 @@
 			document.getElementById("calculator-amount_gr_day").textContent = food_gr_day;
 			document.getElementById("calculator-amount_cube_day").textContent = food_cube_day;
 
+			document.getElementById("calculator-message_activity").textContent = mascot_activity_text;
 			document.getElementById("calculator-message_products").textContent = mascot_allergy_text;
 
 			document.getElementById('calculator-form').classList.add('resultado');
@@ -1750,10 +1765,29 @@
 		}
 	});
 
+	const show_weight = document.querySelectorAll('.maximum-weight');
+	document.getElementById("gato").addEventListener('click', function() {
+		show_weight.forEach(element => {
+			element.classList.add('hide-weight');
+		});
+		if (document.getElementById('peso').value  >15){
+			document.getElementById('peso').value = "";
+			document.getElementById('peso').classList.add('empty-value');
+		}
+    });
+	document.getElementById("perro").addEventListener('click', function() {
+		show_weight.forEach(element => {
+			element.classList.remove('hide-weight');
+		});
+    });
+
 	document.getElementById("calculator-back").addEventListener('click', function() {
 		document.getElementById("calculator-mascot-form").reset();
 		document.getElementById('calculator-form').classList.remove('resultado');
 		document.getElementById('calculator-message').classList.remove('resultado');
+		show_weight.forEach(element => {
+			element.classList.remove('hide-weight');
+		});
 		setTimeout(function() {
 			resetProducts();
 			document.querySelector("svg").getElementById('perro').classList.remove('show');
